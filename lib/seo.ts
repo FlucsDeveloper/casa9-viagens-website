@@ -21,7 +21,7 @@ export function generateMetadata(seo: SEOMetadata): Metadata {
     description: seo.description,
     keywords: seo.keywords?.join(", "),
     authors: seo.author ? [{ name: seo.author }] : undefined,
-    canonical: canonicalUrl,
+    alternates: canonicalUrl ? { canonical: canonicalUrl } : undefined,
     openGraph: {
       title: seo.title,
       description: seo.description,
