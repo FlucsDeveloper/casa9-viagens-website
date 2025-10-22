@@ -3,10 +3,5 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["sfo1"],
-  "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 30
-    }
-  }
+  "regions": ["sfo1"]
 }
