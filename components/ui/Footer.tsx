@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, Instagram, Heart, CheckCircle } from "lucide-react";
-import LogoLotus from "./LogoLotus";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -75,8 +75,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex items-center gap-4 mb-6 group">
-              <div className="w-16 h-16 flex items-center justify-center text-[#B8956A] group-hover:text-[#9D7A4A] transition-colors">
-                <LogoLotus className="w-16 h-16" />
+              <div className="relative w-16 h-16">
+                <Image
+                  src="/logo-casa9.png"
+                  alt="Casa 9 Viagens - Flor de Lótus"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div>
                 <span className="text-3xl font-serif font-bold text-neutral-text block group-hover:text-[#B8956A] transition-colors">

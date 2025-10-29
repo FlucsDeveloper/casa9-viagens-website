@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import LogoLotus from "./LogoLotus";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,11 +50,17 @@ export default function Header() {
             onClick={closeMenu}
           >
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              className="text-[#B8956A] group-hover:text-[#9D7A4A] transition-colors"
+              className="relative w-16 h-16 md:w-20 md:h-20"
             >
-              <LogoLotus className="w-16 h-16 md:w-20 md:h-20" />
+              <Image
+                src="/logo-casa9.png"
+                alt="Casa 9 Viagens - Flor de Lótus"
+                fill
+                className="object-contain"
+                priority
+              />
             </motion.div>
             <div className="flex flex-col">
               <span className="font-serif text-xl md:text-2xl font-bold text-neutral-text group-hover:text-[#B8956A] transition-colors">
