@@ -63,7 +63,7 @@ export default function Header() {
               />
             </motion.div>
             <div className="flex flex-col">
-              <span className="font-serif text-xl md:text-2xl font-bold text-neutral-text group-hover:text-[#B8956A] transition-colors">
+              <span className="font-serif text-base md:text-lg font-bold text-neutral-text group-hover:text-[#B8956A] transition-colors">
                 Casa 9 Viagens
               </span>
               <span className="text-[10px] md:text-xs text-neutral-text-light tracking-wider uppercase">
