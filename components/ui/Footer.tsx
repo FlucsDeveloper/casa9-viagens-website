@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Mail, Phone, Instagram, Heart, CheckCircle } from "lucide-react";
-import Logo from "./Logo";
+import LogoLotus from "./LogoLotus";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -76,7 +76,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-flex items-center gap-4 mb-6 group">
               <div className="w-16 h-16 flex items-center justify-center text-[#B8956A] group-hover:text-[#9D7A4A] transition-colors">
-                <Logo className="w-16 h-16" />
+                <LogoLotus className="w-16 h-16" />
               </div>
               <div>
                 <span className="text-3xl font-serif font-bold text-neutral-text block group-hover:text-[#B8956A] transition-colors">
