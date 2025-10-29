@@ -1,10 +1,70 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Mail, Phone, Instagram, Heart } from "lucide-react";
+import { Mail, Phone, Instagram, Heart, CheckCircle } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterConsent, setNewsletterConsent] = useState(false);
+  const [newsletterStatus, setNewsletterStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!newsletterConsent) {
+      setNewsletterStatus({
+        type: "error",
+        message: "Você precisa aceitar os termos para continuar.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setNewsletterStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: newsletterEmail,
+          consent: newsletterConsent,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setNewsletterStatus({
+          type: "success",
+          message: "Cadastrado! Verifique seu e-mail para confirmar.",
+        });
+        setNewsletterEmail("");
+        setNewsletterConsent(false);
+      } else {
+        setNewsletterStatus({
+          type: "error",
+          message: result.message || "Erro ao cadastrar. Tente novamente.",
+        });
+      }
+    } catch (error) {
+      setNewsletterStatus({
+        type: "error",
+        message: "Erro ao cadastrar. Verifique sua conexão.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <footer className="relative bg-gradient-to-b from-sand-50 to-sand-100 mt-32">
@@ -14,27 +74,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 pb-16 border-b border-sand-200">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
-              <div className="w-10 h-10 bg-ocean-500 rounded-xl flex items-center justify-center group-hover:bg-ocean-600 transition-colors">
-                <svg
-                  className="w-6 h-6 text-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                  <polyline points="9 22 9 12 15 12 15 22" />
-                </svg>
+            <Link href="/" className="inline-flex items-center gap-4 mb-6 group">
+              <div className="w-16 h-16 flex items-center justify-center text-[#B8956A] group-hover:text-[#9D7A4A] transition-colors">
+                <Logo className="w-16 h-16" />
               </div>
               <div>
-                <span className="text-2xl font-serif font-bold text-neutral-text block">
+                <span className="text-3xl font-serif font-bold text-neutral-text block group-hover:text-[#B8956A] transition-colors">
                   Casa 9 Viagens
                 </span>
-                <span className="text-xs text-neutral-text-light uppercase tracking-wider">
-                  Memórias que ficam
+                <span className="text-sm text-neutral-text-light uppercase tracking-wider">
+                  Viagens de Reconexão
                 </span>
               </div>
             </Link>
@@ -80,19 +129,65 @@ export default function Footer() {
               Receba histórias de viagem, dicas exclusivas e destinos
               inspiradores direto no seu email.
             </p>
-            <form className="flex gap-3" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="seu@email.com"
-                className="flex-1 px-4 py-3 bg-white border border-sand-200 rounded-xl text-neutral-text placeholder:text-neutral-text-lighter focus:outline-none focus:border-ocean-500 focus:ring-2 focus:ring-ocean-100 transition-all"
-                aria-label="Email para newsletter"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-ocean-500 text-white rounded-xl font-medium hover:bg-ocean-600 transition-all hover:scale-105 whitespace-nowrap"
+
+            {newsletterStatus.type && (
+              <div
+                className={`mb-4 p-3 rounded-xl text-sm flex items-start gap-2 ${
+                  newsletterStatus.type === "success"
+                    ? "bg-green-50 text-green-700 border border-green-200"
+                    : "bg-red-50 text-red-700 border border-red-200"
+                }`}
               >
-                Inscrever
-              </button>
+                {newsletterStatus.type === "success" && (
+                  <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                )}
+                {newsletterStatus.message}
+              </div>
+            )}
+
+            <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+              <div className="flex gap-3">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="seu@email.com"
+                  required
+                  className="flex-1 px-4 py-3 bg-white border border-sand-200 rounded-xl text-neutral-text placeholder:text-neutral-text-lighter focus:outline-none focus:border-ocean-500 focus:ring-2 focus:ring-ocean-100 transition-all"
+                  aria-label="Email para newsletter"
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-6 py-3 bg-ocean-500 text-white rounded-xl font-medium hover:bg-ocean-600 disabled:bg-ocean-300 transition-all hover:scale-105 disabled:scale-100 whitespace-nowrap"
+                >
+                  {isSubmitting ? "..." : "Inscrever"}
+                </button>
+              </div>
+
+              {/* LGPD Consent */}
+              <div className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  id="newsletter-consent"
+                  checked={newsletterConsent}
+                  onChange={(e) => setNewsletterConsent(e.target.checked)}
+                  className="mt-1 w-4 h-4 rounded border-sand-300 text-ocean-500 focus:ring-ocean-500"
+                />
+                <label
+                  htmlFor="newsletter-consent"
+                  className="text-xs text-neutral-text-light leading-relaxed"
+                >
+                  Concordo em receber comunicações da Casa 9 Viagens. Conforme a{" "}
+                  <Link
+                    href="/privacidade"
+                    className="underline hover:text-ocean-500"
+                  >
+                    Política de Privacidade
+                  </Link>
+                  . Você pode cancelar a qualquer momento.
+                </label>
+              </div>
             </form>
           </div>
         </div>
@@ -123,10 +218,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/destinos"
+                  href="/experiencias"
                   className="text-neutral-text-light hover:text-ocean-500 transition-colors text-sm"
                 >
-                  Destinos
+                  Experiências
                 </Link>
               </li>
               <li>
@@ -148,34 +243,18 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/destinos?categoria=romantica"
+                  href="/planeje-sua-viagem"
                   className="text-neutral-text-light hover:text-ocean-500 transition-colors text-sm"
                 >
-                  Românticas
+                  Planeje sua Viagem
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/destinos?categoria=aventura"
+                  href="/experiencias"
                   className="text-neutral-text-light hover:text-ocean-500 transition-colors text-sm"
                 >
-                  Aventura
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/destinos?categoria=bem-estar"
-                  className="text-neutral-text-light hover:text-ocean-500 transition-colors text-sm"
-                >
-                  Bem-estar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/destinos?categoria=familia"
-                  className="text-neutral-text-light hover:text-ocean-500 transition-colors text-sm"
-                >
-                  Em Família
+                  Todas Experiências
                 </Link>
               </li>
             </ul>
@@ -283,18 +362,24 @@ export default function Footer() {
             <p>
               © {currentYear} Casa 9 Viagens. Todos os direitos reservados.
             </p>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-4">
               <Link
                 href="/privacidade"
                 className="hover:text-ocean-500 transition-colors"
               >
-                Privacidade
+                Política de Privacidade
               </Link>
               <Link
                 href="/termos"
                 className="hover:text-ocean-500 transition-colors"
               >
                 Termos de Uso
+              </Link>
+              <Link
+                href="/excluir-dados"
+                className="hover:text-ocean-500 transition-colors"
+              >
+                Excluir meus dados
               </Link>
             </div>
           </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,8 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/sobre", label: "Sobre" },
-    { href: "/destinos", label: "Destinos" },
+    { href: "/experiencias", label: "Experiências" },
+    { href: "/planeje-sua-viagem", label: "Planeje sua Viagem" },
     { href: "/depoimentos", label: "Depoimentos" },
     { href: "/blog", label: "Blog" },
   ];
@@ -48,28 +50,18 @@ export default function Header() {
             onClick={closeMenu}
           >
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
+              className="text-[#B8956A] group-hover:text-[#9D7A4A] transition-colors"
             >
-              <svg
-                className="w-7 h-7 text-ocean-500 group-hover:text-ocean-600 transition-colors"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" />
-              </svg>
+              <Logo className="w-14 h-14" />
             </motion.div>
-            <div className="hidden sm:flex flex-col">
-              <span className="font-serif text-lg font-bold text-neutral-text group-hover:text-ocean-500 transition-colors">
+            <div className="flex flex-col">
+              <span className="font-serif text-xl md:text-2xl font-bold text-neutral-text group-hover:text-[#B8956A] transition-colors">
                 Casa 9 Viagens
               </span>
-              <span className="text-[10px] text-neutral-text-light tracking-wider uppercase">
-                Memórias que ficam
+              <span className="text-[10px] md:text-xs text-neutral-text-light tracking-wider uppercase">
+                Viagens de Reconexão
               </span>
             </div>
           </Link>

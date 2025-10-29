@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import EbookPopup from "@/components/ui/EbookPopup";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -102,6 +103,7 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <EbookPopup />
       </body>
     </html>
   );

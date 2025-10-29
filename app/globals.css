@@ -12,6 +12,8 @@
     font-family: var(--font-inter), sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
   }
 
   h1,
@@ -23,6 +25,7 @@
     font-family: var(--font-fraunces), serif;
     font-weight: 600;
     line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
   h1 {

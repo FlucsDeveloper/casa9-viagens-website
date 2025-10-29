@@ -9,10 +9,14 @@ import {
   Heart,
   Users,
   Compass,
-  Shield,
   ArrowRight,
   Sparkles,
+  Activity,
+  Utensils,
+  Brain,
+  HandHeart,
 } from "lucide-react";
+import { heroImages, backgroundImages } from "@/lib/images";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -37,30 +41,37 @@ const itemVariants = {
 };
 
 export default function Home() {
-  const features = [
+  // Os 5 Pilares da Casa 9 (conforme PRD)
+  const pilares = [
     {
-      icon: Heart,
-      title: "Feito com Amor",
+      icon: Activity,
+      title: "Corpo",
       description:
-        "Cada detalhe é pensado como se fosse para alguém especial — porque é.",
+        "Movimento, yoga, trilhas. Experiências que te reconectam com a vitalidade do seu corpo.",
+    },
+    {
+      icon: Utensils,
+      title: "Alimentação",
+      description:
+        "Gastronomia consciente, sabores locais, rituais de nutrição que alimentam corpo e alma.",
+    },
+    {
+      icon: Sparkles,
+      title: "Espiritualidade",
+      description:
+        "Templos, retiros, cerimônias. Jornadas que te conectam com o sagrado dentro e fora de você.",
     },
     {
       icon: Users,
-      title: "Experiências Únicas",
+      title: "Conexões",
       description:
-        "Você não é um número. Sua viagem não será igual a nenhuma outra.",
+        "Com outros viajantes, com comunidades locais, consigo mesmo. Viagens em grupo que transformam.",
     },
     {
-      icon: Compass,
-      title: "Expertise Genuína",
+      icon: Brain,
+      title: "Autoconhecimento",
       description:
-        "Parceiros locais que conhecem cada segredo, cada história, cada cantinho.",
-    },
-    {
-      icon: Shield,
-      title: "Cuidado Total",
-      description:
-        "Estamos com você antes, durante e depois. Sua tranquilidade é sagrada.",
+        "Cada viagem é um espelho. Experiências que te convidam a olhar para dentro e se descobrir.",
     },
   ];
 
@@ -92,14 +103,14 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=1920&q=90"
-            alt="Paisagem serena ao amanhecer"
+            src={heroImages.home.url}
+            alt={heroImages.home.alt}
             fill
             className="object-cover"
             priority
             quality={90}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-white" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-white" />
         </div>
 
         {/* Content */}
@@ -119,12 +130,13 @@ export default function Home() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-[1.1] drop-shadow-lg"
+              className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]"
+              style={{ textShadow: '0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3)' }}
             >
               Algumas viagens{" "}
-              <span className="text-sand-50 italic">passam.</span>
+              <span className="text-sand-100 italic">passam.</span>
               <br />
-              <span className="bg-gradient-to-r from-ocean-300 to-accent-terracotta bg-clip-text text-transparent">
+              <span className="text-accent-terracotta">
                 Outras ficam
               </span>{" "}
               com a gente
@@ -134,10 +146,11 @@ export default function Home() {
 
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 leading-relaxed drop-shadow-md"
+              className="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-10 leading-relaxed"
+              style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.6)' }}
             >
               Não criamos roteiros. Criamos{" "}
-              <span className="font-serif italic">momentos</span> que você vai
+              <span className="font-serif italic font-bold">momentos</span> que você vai
               querer reviver toda vez que fechar os olhos.
             </motion.p>
 
@@ -145,13 +158,13 @@ export default function Home() {
               variants={itemVariants}
               className="flex gap-4 justify-center flex-wrap"
             >
-              <Link href="/destinos">
+              <Link href="/experiencias">
                 <Button
                   variant="primary"
                   size="lg"
                   className="shadow-2xl hover:shadow-ocean-500/50"
                 >
-                  Explorar Destinos <ArrowRight className="w-5 h-5 ml-2" />
+                  Explorar Experiências <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
               <Link href="/sobre">
@@ -201,15 +214,16 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl"
+              className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl group"
             >
               <Image
-                src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=90"
-                alt="Pessoa viajando com calma"
+                src="https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=90&fit=crop"
+                alt="Viajante contemplando paisagem serena"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
                 quality={90}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </motion.div>
 
             <motion.div
@@ -250,9 +264,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="section-padding bg-gradient-to-b from-sand-50 to-white">
-        <div className="container-max">
+      {/* Pilares Section */}
+      <section className="relative section-padding overflow-hidden">
+        {/* Background with subtle texture */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-sand-50 via-white to-sand-50/30" />
+          <div
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=1600&q=90&fit=crop")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+        </div>
+        <div className="container-max relative z-10">
           <motion.div
             className="text-center mb-20"
             initial={{ opacity: 0, y: 20 }}
@@ -261,45 +287,67 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <span className="text-sm font-semibold text-ocean-500 uppercase tracking-widest mb-4 block">
-              Por que Somos Diferentes
+              Nossos 5 Pilares
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-neutral-text max-w-3xl mx-auto">
-              O que fazemos é mais que organizar viagens
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-neutral-text max-w-3xl mx-auto mb-4">
+              Viagens que nutrem todas as dimensões do ser
             </h2>
+            <p className="text-xl text-neutral-text-light max-w-2xl mx-auto">
+              Cada experiência é desenhada para tocar diferentes aspectos da sua vida
+            </p>
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"
             initial="hidden"
             whileInView="visible"
             variants={containerVariants}
             viewport={{ once: true }}
           >
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
+            {pilares.map((pilar, index) => {
+              const Icon = pilar.icon;
               return (
                 <motion.div key={index} variants={itemVariants}>
-                  <Card hover className="h-full p-8 group hover:shadow-2xl transition-all duration-500">
-                    <div className="w-14 h-14 bg-ocean-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-ocean-100 group-hover:scale-110 transition-all duration-300">
-                      <Icon className="w-7 h-7 text-ocean-500" />
+                  <Card hover className="h-full p-8 group hover:shadow-2xl transition-all duration-500 text-center bg-white/80 backdrop-blur-sm border-sand-200/50">
+                    <div className="w-16 h-16 bg-gradient-to-br from-ocean-100 to-ocean-50 rounded-2xl flex items-center justify-center mb-6 group-hover:from-ocean-500 group-hover:to-ocean-400 group-hover:scale-110 transition-all duration-300 mx-auto shadow-sm">
+                      <Icon className="w-8 h-8 text-ocean-600 group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <h3 className="text-xl font-serif font-bold text-neutral-text mb-3">
-                      {feature.title}
+                    <h3 className="text-xl font-serif font-bold text-neutral-text mb-3 group-hover:text-ocean-600 transition-colors">
+                      {pilar.title}
                     </h3>
-                    <p className="text-neutral-text-light leading-relaxed">
-                      {feature.description}
+                    <p className="text-neutral-text-light leading-relaxed text-sm">
+                      {pilar.description}
                     </p>
                   </Card>
                 </motion.div>
               );
             })}
           </motion.div>
+
+          <div className="text-center mt-12">
+            <Link href="/experiencias">
+              <Button variant="outline" size="lg">
+                Explorar Experiências <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="section-padding bg-white">
-        <div className="container-max">
+      <section className="relative section-padding overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={backgroundImages.testimonials.url}
+            alt={backgroundImages.testimonials.alt}
+            fill
+            className="object-cover"
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/95" />
+        </div>
+        <div className="container-max relative z-10">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -324,24 +372,24 @@ export default function Home() {
           >
             {testimonials.map((testimonial, index) => (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full p-8 bg-gradient-to-br from-sand-50 to-white border-sand-200">
-                  <div className="text-ocean-300 mb-4">
+                <Card className="h-full p-8 bg-white/90 backdrop-blur-sm border-sand-200 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="text-ocean-400 mb-4">
                     <svg
-                      className="w-10 h-10"
+                      className="w-12 h-12 opacity-40"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                   </div>
-                  <p className="text-lg text-neutral-text italic mb-6 leading-relaxed">
-                    {testimonial.quote}
+                  <p className="text-lg text-neutral-text italic mb-6 leading-relaxed font-light">
+                    "{testimonial.quote}"
                   </p>
-                  <div>
+                  <div className="pt-4 border-t border-sand-200">
                     <p className="font-bold text-neutral-text">
                       {testimonial.author}
                     </p>
-                    <p className="text-sm text-ocean-500">{testimonial.trip}</p>
+                    <p className="text-sm text-ocean-500 font-medium">{testimonial.trip}</p>
                   </div>
                 </Card>
               </motion.div>
@@ -362,8 +410,8 @@ export default function Home() {
       <section className="relative section-padding overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=90"
-            alt="Pôr do sol sereno"
+            src={backgroundImages.ctaHome.url}
+            alt={backgroundImages.ctaHome.alt}
             fill
             className="object-cover"
             quality={90}
