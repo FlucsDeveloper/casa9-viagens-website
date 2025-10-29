@@ -217,13 +217,13 @@ export default function Home() {
               className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl group"
             >
               <Image
-                src="https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=90&fit=crop"
-                alt="Viajante contemplando paisagem serena"
+                src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=90&fit=crop"
+                alt="Spa natural com pedras – wellness e cuidado corporal"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 quality={90}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </motion.div>
 
             <motion.div
@@ -266,17 +266,16 @@ export default function Home() {
 
       {/* Pilares Section */}
       <section className="relative section-padding overflow-hidden">
-        {/* Background with subtle texture */}
+        {/* Background com imagem relacionada aos pilares */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-sand-50 via-white to-sand-50/30" />
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage: 'url("https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=1600&q=90&fit=crop")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
+          <Image
+            src={backgroundImages.pilaresSection.url}
+            alt={backgroundImages.pilaresSection.alt}
+            fill
+            className="object-cover"
+            quality={90}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/97 via-white/95 to-white/97" />
         </div>
         <div className="container-max relative z-10">
           <motion.div

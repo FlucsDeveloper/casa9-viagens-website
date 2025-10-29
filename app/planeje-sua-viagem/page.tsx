@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { heroImages } from "@/lib/images";
+import { heroImages, backgroundImages } from "@/lib/images";
 
 interface BookingFormData {
   name: string;
@@ -160,17 +160,9 @@ export default function PlanejeSuaViagemPage() {
 
       {/* Benefits Section */}
       <section className="relative section-padding overflow-hidden">
-        {/* Background */}
+        {/* Background suave e acolhedor */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-sand-50/50 to-ocean-50/20" />
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage: 'url("https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=1600&q=90&fit=crop")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-sand-50/40 to-white" />
         </div>
         <div className="container-max relative z-10">
           <motion.div
@@ -219,16 +211,16 @@ export default function PlanejeSuaViagemPage() {
 
       {/* Booking Form Section */}
       <section className="relative section-padding overflow-hidden">
-        {/* Background with subtle image */}
+        {/* Background alinhado com pilar Autoconhecimento */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=90&fit=crop"
-            alt="Fundo suave"
+            src={backgroundImages.planejeForm.url}
+            alt={backgroundImages.planejeForm.alt}
             fill
             className="object-cover"
             quality={90}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-sand-50/98 via-ocean-50/95 to-sand-50/98" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/97 via-sand-50/96 to-white/97" />
         </div>
         <div className="container-max relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

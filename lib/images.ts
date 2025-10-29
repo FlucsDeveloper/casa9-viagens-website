@@ -7,27 +7,28 @@ export interface ImageConfig {
   credit?: string;
 }
 
-// Hero images por página - fotos alegres e dinâmicas
+// Hero images por página - alinhadas com os 5 pilares da Casa 9
+// Valores: Corpo, Alimentação, Espiritualidade, Conexões, Autoconhecimento
 export const heroImages = {
   home: {
-    url: "https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1920&q=90&fit=crop", // Grupo de amigos saltando felizes em viagem
-    alt: "Amigos celebrando juntos em viagem – momentos de alegria e conexão",
+    url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=90&fit=crop", // Montanhas ao nascer do sol - transformação e autoconhecimento
+    alt: "Nascer do sol nas montanhas – jornada de transformação interior",
   },
   sobre: {
-    url: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=90&fit=crop", // Mulher feliz viajando de carro
-    alt: "Viajante sorridente explorando novos horizontes",
+    url: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920&q=90&fit=crop", // Yoga ao nascer do sol - pilar Corpo
+    alt: "Prática de yoga ao amanhecer – conexão corpo, mente e espírito",
   },
   experiencias: {
-    url: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=90&fit=crop", // Lago colorido ao pôr do sol vibrante
-    alt: "Pôr do sol vibrante sobre o lago – aventura e descobertas",
+    url: "https://images.unsplash.com/photo-1528127269322-539801943592?w=1920&q=90&fit=crop", // Viajante contemplando paisagem - introspecção
+    alt: "Contemplação da natureza – experiências que transformam",
   },
   planejeSuaViagem: {
-    url: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=1920&q=90&fit=crop", // Casal feliz na praia
-    alt: "Casal sorrindo na praia – planeje sua próxima aventura",
+    url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&q=90&fit=crop", // Pessoas conversando genuinamente - pilar Conexões
+    alt: "Conversa genuína e acolhedora – vamos planejar juntos",
   },
   contato: {
-    url: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=1920&q=90&fit=crop", // Pessoas conversando animadamente
-    alt: "Conversa alegre e acolhedora – vamos planejar juntos",
+    url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=90&fit=crop", // Círculo de conexão ao pôr do sol - pilar Conexões
+    alt: "Círculo de conexões humanas – iniciando uma jornada juntos",
   },
 };
 
@@ -191,19 +192,31 @@ export const experienciaImages = {
   },
 };
 
-// Imagens de background para seções - mais alegres e coloridas
+// Imagens de background para seções - refletindo os valores do Casa 9
 export const backgroundImages = {
   ctaHome: {
-    url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=90&fit=crop", // Praia tropical vibrante
-    alt: "Praia paradisíaca com águas cristalinas – seu próximo destino",
+    url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=90&fit=crop", // Pessoa meditando na natureza - Espiritualidade + Autoconhecimento
+    alt: "Meditação em meio à natureza – encontre sua paz interior",
   },
   testimonials: {
-    url: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1600&q=90&fit=crop", // Montanhas verdes vibrantes
-    alt: "Paisagem montanhosa exuberante – histórias inspiradoras",
+    url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=90&fit=crop", // Ingredientes frescos naturais - pilar Alimentação
+    alt: "Ingredientes frescos e naturais – nutrição consciente",
   },
   newsletter: {
-    url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&q=90&fit=crop", // Estrada aberta com céu colorido
-    alt: "Estrada aberta para novas aventuras – junte-se a nós",
+    url: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?w=1600&q=90&fit=crop", // Estrada solitária contemplativa - Autoconhecimento
+    alt: "Caminho para autoconhecimento – jornada interior",
+  },
+  pilaresSection: {
+    url: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1600&q=90&fit=crop", // Templo zen - Espiritualidade
+    alt: "Templo zen – espaço de contemplação e transformação",
+  },
+  experienciasContact: {
+    url: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1600&q=90&fit=crop", // Abraço genuíno - pilar Conexões
+    alt: "Abraço sincero – conexões que transformam",
+  },
+  planejeForm: {
+    url: "https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?w=1600&q=90&fit=crop", // Pessoa com diário na natureza - Autoconhecimento
+    alt: "Registro contemplativo – planejando sua jornada interior",
   },
 };
 

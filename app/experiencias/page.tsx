@@ -15,7 +15,7 @@ import {
   MessageCircle,
   Calendar,
 } from "lucide-react";
-import { heroImages, experienciaImages } from "@/lib/images";
+import { heroImages, experienciaImages, backgroundImages } from "@/lib/images";
 
 interface Experience {
   slug: string;
@@ -317,17 +317,16 @@ export default function ExperienciasPage() {
         id="contact-form"
         className="relative section-padding overflow-hidden"
       >
-        {/* Background with subtle pattern */}
+        {/* Background alinhado com pilar Conexões */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-sand-50 to-ocean-50/20" />
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: 'url("https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=90&fit=crop")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
+          <Image
+            src={backgroundImages.experienciasContact.url}
+            alt={backgroundImages.experienciasContact.alt}
+            fill
+            className="object-cover"
+            quality={90}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/96 via-sand-50/94 to-white/96" />
         </div>
         <div className="container-sm relative z-10">
           <div className="text-center mb-12">

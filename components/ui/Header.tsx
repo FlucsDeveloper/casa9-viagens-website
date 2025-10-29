@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "./Logo";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,9 +52,16 @@ export default function Header() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              className="text-[#B8956A] group-hover:text-[#9D7A4A] transition-colors"
+              className="relative w-16 h-16 md:w-20 md:h-20"
             >
-              <Logo className="w-14 h-14" />
+              {/* Substitua o src abaixo pela URL da imagem do seu logo */}
+              <Image
+                src="https://i.ibb.co/7y3qKhg/casa9-logo.png"
+                alt="Casa 9 Viagens Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </motion.div>
             <div className="flex flex-col">
               <span className="font-serif text-xl md:text-2xl font-bold text-neutral-text group-hover:text-[#B8956A] transition-colors">
