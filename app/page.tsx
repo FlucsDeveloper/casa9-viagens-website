@@ -5,18 +5,20 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+import CredentialsStrip from "@/components/ui/CredentialsStrip";
+import ExperienceCard from "@/components/ui/ExperienceCard";
+import FounderCard from "@/components/ui/FounderCard";
 import {
-  Heart,
-  Users,
-  Compass,
   ArrowRight,
   Sparkles,
   Activity,
   Utensils,
   Brain,
   HandHeart,
+  Briefcase,
 } from "lucide-react";
 import { heroImages, backgroundImages } from "@/lib/images";
+import { home, experiences, seo } from "@/content";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -41,63 +43,40 @@ const itemVariants = {
 };
 
 export default function Home() {
-  // Os 5 Pilares da Casa 9 (conforme PRD)
-  const pilares = [
-    {
-      icon: Activity,
-      title: "Corpo",
-      description:
-        "Movimento, yoga, trilhas. Experiências que te reconectam com a vitalidade do seu corpo.",
-    },
-    {
-      icon: Utensils,
-      title: "Alimentação",
-      description:
-        "Gastronomia consciente, sabores locais, rituais de nutrição que alimentam corpo e alma.",
-    },
-    {
-      icon: Sparkles,
-      title: "Espiritualidade",
-      description:
-        "Templos, retiros, cerimônias. Jornadas que te conectam com o sagrado dentro e fora de você.",
-    },
-    {
-      icon: Users,
-      title: "Conexões",
-      description:
-        "Com outros viajantes, com comunidades locais, consigo mesmo. Viagens em grupo que transformam.",
-    },
-    {
-      icon: Brain,
-      title: "Autoconhecimento",
-      description:
-        "Cada viagem é um espelho. Experiências que te convidam a olhar para dentro e se descobrir.",
-    },
-  ];
+  // Icons for the 5 Pilares
+  const pilaresIcons = [Activity, Utensils, Sparkles, Briefcase, HandHeart];
 
-  const testimonials = [
-    {
-      quote:
-        "Foi muito mais que uma viagem. Foi um renascimento. Voltamos diferentes.",
-      author: "Mariana & Lucas",
-      trip: "Toscana",
-    },
-    {
-      quote:
-        "Nunca imaginei que viajar sozinha seria tão libertador. Casa 9 me deu asas.",
-      author: "Fernanda",
-      trip: "Bali",
-    },
-    {
-      quote:
-        "Conseguimos nos reconectar como família. As crianças ainda falam disso todos os dias.",
-      author: "Família Costa",
-      trip: "Portugal",
-    },
-  ];
+  const pilaresWithIcons = home.pilares.map((pilar, index) => ({
+    ...pilar,
+    icon: pilaresIcons[index],
+  }));
+
+  // Featured experiences (first 3)
+  const featuredExperiences = experiences.slice(0, 3);
 
   return (
     <>
+      {/* JSON-LD Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            name: seo.organization.name,
+            description: seo.organization.description,
+            founder: {
+              "@type": "Person",
+              name: seo.organization.founder,
+            },
+            memberOf: {
+              "@type": "Organization",
+              name: seo.organization.memberOf,
+            },
+          }),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
@@ -131,27 +110,20 @@ export default function Home() {
             <motion.h1
               variants={itemVariants}
               className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]"
-              style={{ textShadow: '0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3)' }}
+              style={{
+                textShadow:
+                  "0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3)",
+              }}
             >
-              Algumas viagens{" "}
-              <span className="text-sand-100 italic">passam.</span>
-              <br />
-              <span className="text-accent-terracotta">
-                Outras ficam
-              </span>{" "}
-              com a gente
-              <br />
-              para sempre.
+              {home.hero.title}
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-10 leading-relaxed"
-              style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.6)' }}
+              style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.6)" }}
             >
-              Não criamos roteiros. Criamos{" "}
-              <span className="font-serif italic font-bold">momentos</span> que você vai
-              querer reviver toda vez que fechar os olhos.
+              {home.hero.subtitle}
             </motion.p>
 
             <motion.div
@@ -205,64 +177,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Introduction with Image */}
-      <section className="section-padding bg-white">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl group"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=90&fit=crop"
-                alt="Spa natural com pedras – wellness e cuidado corporal"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                quality={90}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-sm font-semibold text-ocean-500 uppercase tracking-widest mb-4 block">
-                Nossa Essência
-              </span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-neutral-text mb-6 leading-tight">
-                Viagens que tocam
-                <br />a alma
-              </h2>
-              <div className="space-y-4 text-lg text-neutral-text-light leading-relaxed">
-                <p>
-                  Não vendemos pacotes turísticos. Criamos experiências que se
-                  conectam com quem você é, com o que você busca, com os
-                  momentos que você quer guardar para sempre.
-                </p>
-                <p>
-                  Cada roteiro nasce de conversas longas, de perguntas
-                  cuidadosas, de uma vontade genuína de entender o que faz seu
-                  coração vibrar.
-                </p>
-                <p className="font-serif italic text-ocean-500">
-                  Porque viajar não é sobre ir. É sobre se transformar.
-                </p>
-              </div>
-              <Link href="/sobre" className="inline-block mt-8">
-                <Button variant="outline" size="lg">
-                  Conheça Nossa História
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Credentials Strip */}
+      <CredentialsStrip />
 
       {/* Pilares Section */}
       <section className="relative section-padding overflow-hidden">
@@ -286,13 +202,14 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <span className="text-sm font-semibold text-ocean-500 uppercase tracking-widest mb-4 block">
-              Nossos 5 Pilares
+              Os 5 Pilares da Saúde Integral
             </span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-neutral-text max-w-3xl mx-auto mb-4">
               Viagens que nutrem todas as dimensões do ser
             </h2>
             <p className="text-xl text-neutral-text-light max-w-2xl mx-auto">
-              Cada experiência é desenhada para tocar diferentes aspectos da sua vida
+              Cada experiência é desenhada para tocar diferentes aspectos da sua
+              vida
             </p>
           </motion.div>
 
@@ -303,11 +220,14 @@ export default function Home() {
             variants={containerVariants}
             viewport={{ once: true }}
           >
-            {pilares.map((pilar, index) => {
+            {pilaresWithIcons.map((pilar, index) => {
               const Icon = pilar.icon;
               return (
                 <motion.div key={index} variants={itemVariants}>
-                  <Card hover className="h-full p-8 group hover:shadow-2xl transition-all duration-500 text-center bg-white/80 backdrop-blur-sm border-sand-200/50">
+                  <Card
+                    hover
+                    className="h-full p-8 group hover:shadow-2xl transition-all duration-500 text-center bg-white/80 backdrop-blur-sm border-sand-200/50"
+                  >
                     <div className="w-16 h-16 bg-gradient-to-br from-ocean-100 to-ocean-50 rounded-2xl flex items-center justify-center mb-6 group-hover:from-ocean-500 group-hover:to-ocean-400 group-hover:scale-110 transition-all duration-300 mx-auto shadow-sm">
                       <Icon className="w-8 h-8 text-ocean-600 group-hover:text-white transition-colors duration-300" />
                     </div>
@@ -322,30 +242,66 @@ export default function Home() {
               );
             })}
           </motion.div>
-
-          <div className="text-center mt-12">
-            <Link href="/experiencias">
-              <Button variant="outline" size="lg">
-                Explorar Experiências <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="relative section-padding overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={backgroundImages.testimonials.url}
-            alt={backgroundImages.testimonials.alt}
-            fill
-            className="object-cover"
-            quality={90}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/95" />
+      {/* Por que a Casa 9 Section */}
+      <section className="section-padding bg-white">
+        <div className="container-max">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-sm font-semibold text-ocean-500 uppercase tracking-widest mb-4 block">
+              Nossa Diferença
+            </span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-neutral-text max-w-3xl mx-auto mb-4">
+              Por que a Casa 9
+            </h2>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+            initial="hidden"
+            whileInView="visible"
+            variants={containerVariants}
+            viewport={{ once: true }}
+          >
+            {home.why.map((reason, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Card className="h-full p-8 bg-sand-50/50 border-sand-200">
+                  <div className="w-12 h-12 bg-ocean-500 rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl">
+                    {index + 1}
+                  </div>
+                  <p className="text-lg text-neutral-text leading-relaxed">
+                    {reason}
+                  </p>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Founder Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <FounderCard variant="compact" />
+          </motion.div>
         </div>
+      </section>
+
+      {/* Featured Experiences Section */}
+      <section className="relative section-padding overflow-hidden">
+        {/* Background gradient */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-sand-50/50 via-white to-sand-50/50" />
+
         <div className="container-max relative z-10">
           <motion.div
             className="text-center mb-16"
@@ -355,11 +311,15 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <span className="text-sm font-semibold text-ocean-500 uppercase tracking-widest mb-4 block">
-              Histórias Reais
+              Experiências em Destaque
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-neutral-text">
-              Quem viajou, voltou diferente
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-neutral-text max-w-3xl mx-auto mb-4">
+              Jornadas que transformam
             </h2>
+            <p className="text-xl text-neutral-text-light max-w-2xl mx-auto">
+              Conheça algumas das experiências que criamos com propósito e
+              cuidado
+            </p>
           </motion.div>
 
           <motion.div
@@ -369,43 +329,34 @@ export default function Home() {
             variants={containerVariants}
             viewport={{ once: true }}
           >
-            {testimonials.map((testimonial, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full p-8 bg-white/90 backdrop-blur-sm border-sand-200 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <div className="text-ocean-400 mb-4">
-                    <svg
-                      className="w-12 h-12 opacity-40"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                  </div>
-                  <p className="text-lg text-neutral-text italic mb-6 leading-relaxed font-light">
-                    "{testimonial.quote}"
-                  </p>
-                  <div className="pt-4 border-t border-sand-200">
-                    <p className="font-bold text-neutral-text">
-                      {testimonial.author}
-                    </p>
-                    <p className="text-sm text-ocean-500 font-medium">{testimonial.trip}</p>
-                  </div>
-                </Card>
+            {featuredExperiences.map((experience, index) => (
+              <motion.div key={experience.slug} variants={itemVariants}>
+                <ExperienceCard
+                  slug={experience.slug}
+                  title={experience.title}
+                  summary={experience.summary}
+                  description={experience.description}
+                  tags={experience.tags}
+                  isGroup={experience.isGroup}
+                  details={experience.details}
+                  idealFor={experience.idealFor}
+                />
               </motion.div>
             ))}
           </motion.div>
 
           <div className="text-center mt-12">
-            <Link href="/depoimentos">
-              <Button variant="ghost">
-                Ler Mais Histórias <ArrowRight className="w-4 h-4 ml-2" />
+            <Link href="/experiencias">
+              <Button variant="primary" size="lg">
+                Ver Todas as Experiências{" "}
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Section with Image */}
+      {/* CTA Section */}
       <section className="relative section-padding overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
