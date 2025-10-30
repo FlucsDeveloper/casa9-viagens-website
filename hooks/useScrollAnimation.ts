@@ -5,19 +5,16 @@ import { useInView } from "framer-motion";
 
 interface UseScrollAnimationOptions {
   threshold?: number;
-  rootMargin?: string;
   triggerOnce?: boolean;
 }
 
 export function useScrollAnimation({
   threshold = 0.1,
-  rootMargin = "0px",
   triggerOnce = true,
 }: UseScrollAnimationOptions = {}) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: triggerOnce,
-    margin: rootMargin,
     amount: threshold,
   });
 
