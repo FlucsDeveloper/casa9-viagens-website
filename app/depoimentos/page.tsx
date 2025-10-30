@@ -110,9 +110,9 @@ const testimonials: Testimonial[] = [
 ];
 
 const stats = [
-  { number: "500+", label: "Viajantes Felizes", icon: Users },
-  { number: "50+", label: "Destinos Incríveis", icon: Award },
-  { number: "100%", label: "Satisfação Garantida", icon: Heart },
+  { number: "Curadoria", label: "Exclusiva e Personalizada", icon: Users },
+  { number: "Planejamento", label: "Detalhado e Cuidadoso", icon: Award },
+  { number: "Atendimento", label: "Dedicado e Integral", icon: Heart, isLogo: true },
 ];
 
 const trustBadges = [
@@ -202,7 +202,7 @@ export default function Depoimentos() {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-gradient-to-br from-ocean-500 to-ocean-600 text-white">
+      <section className="section-padding bg-gradient-to-br from-champagne-50 to-sand-50">
         <div className="container-max">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-12"
@@ -219,13 +219,23 @@ export default function Depoimentos() {
                   className="text-center group"
                   variants={fadeInUp}
                 >
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl mb-6 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
-                    <Icon className="w-10 h-10" />
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-terracotta-400/10 backdrop-blur-sm rounded-2xl mb-6 group-hover:scale-110 group-hover:bg-terracotta-400/20 transition-all duration-500">
+                    {stat.isLogo ? (
+                      <Image
+                        src="/logo-casa9.png"
+                        alt="Casa 9 Logo"
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                      />
+                    ) : (
+                      <Icon className="w-12 h-12 text-terracotta-500" />
+                    )}
                   </div>
-                  <div className="text-6xl font-serif font-bold mb-3">
+                  <div className="text-3xl md:text-4xl font-serif font-bold mb-3 text-terracotta-400">
                     {stat.number}
                   </div>
-                  <p className="text-xl text-ocean-50">{stat.label}</p>
+                  <p className="text-xl text-neutral-text-light">{stat.label}</p>
                 </motion.div>
               );
             })}
@@ -352,7 +362,7 @@ export default function Depoimentos() {
                   variants={fadeInUp}
                 >
                   <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-ocean-400 to-ocean-600 rounded-2xl mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                    <Icon className="w-10 h-10 text-white" />
+                    <Icon className="w-10 h-10 !text-black" />
                   </div>
                   <h3 className="text-2xl font-serif font-bold text-neutral-text mb-3">
                     {badge.title}
@@ -380,27 +390,40 @@ export default function Depoimentos() {
         </div>
 
         {/* Content */}
-        <div className="container-sm relative z-10 text-center text-white py-20">
+        <div className="container-sm relative z-10 text-center py-20">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 leading-tight">
-              Sua história{" "}
-              <span className="italic font-light">pode ser a próxima</span>
-            </h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Vamos transformar seus sonhos em memórias inesquecíveis que você
-              vai querer contar por uma vida inteira.
-            </p>
-            <Link href="/contato">
-              <button className="px-8 py-4 bg-accent-terracotta hover:bg-accent-warm text-white rounded-xl font-medium text-lg transition-all hover:scale-105 shadow-xl flex items-center gap-3 mx-auto">
-                Comece sua Jornada
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </Link>
+            <div className="space-y-8">
+              <div className="inline-block bg-white/95 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-xl">
+                <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight text-neutral-text">
+                  Sua história{" "}
+                  <span className="italic font-light">pode ser a próxima</span>
+                </h2>
+              </div>
+
+              <div className="inline-block bg-white/95 backdrop-blur-sm rounded-2xl px-8 py-5 shadow-xl max-w-2xl">
+                <p className="text-xl text-neutral-text-light leading-relaxed">
+                  Vamos transformar seus sonhos em memórias inesquecíveis que você
+                  vai querer contar por uma vida inteira.
+                </p>
+              </div>
+
+              <div className="flex justify-center mt-4">
+                <div className="inline-block bg-white backdrop-blur-sm rounded-3xl p-2 shadow-2xl border-2 border-black">
+                  <Link href="/contato">
+                    <button className="px-8 py-4 bg-accent-terracotta hover:bg-accent-warm !text-black rounded-xl font-medium text-lg transition-all hover:scale-105 shadow-xl flex items-center gap-3">
+                      Comece sua Jornada
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

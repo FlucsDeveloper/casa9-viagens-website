@@ -8,12 +8,12 @@
 
   body {
     background-color: #FEFEFE;
-    color: #3E3E3E;
+    color: #1E1E1E;
     font-family: var(--font-inter), sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.01em;
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   h1,
@@ -106,12 +106,19 @@
 }
 
 @layer components {
-  /* Container utilities */
+  /* Container utilities with improved mobile spacing */
   .container-max {
     max-width: 1200px;
     margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-max {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
   }
 
   @media (min-width: 768px) {
@@ -121,11 +128,25 @@
     }
   }
 
+  @media (min-width: 1024px) {
+    .container-max {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
   .container-sm {
     max-width: 800px;
     margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-sm {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
   }
 
   @media (min-width: 768px) {
@@ -135,13 +156,27 @@
     }
   }
 
-  /* Section utilities */
+  /* Section utilities with refined mobile spacing */
   .section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-padding {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
   }
 
   @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
     .section-padding {
       padding-top: 8rem;
       padding-bottom: 8rem;
@@ -149,11 +184,25 @@
   }
 
   .section-padding-sm {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-padding-sm {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
   }
 
   @media (min-width: 768px) {
+    .section-padding-sm {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
     .section-padding-sm {
       padding-top: 5rem;
       padding-bottom: 5rem;
@@ -163,7 +212,7 @@
 
   /* Text utilities */
   .text-gradient {
-    background: linear-gradient(to right, #4C7FA1, #C9B8A3);
+    background: linear-gradient(135deg, #C27A5E, #D4AF37);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -176,8 +225,96 @@
 
   /* Focus visible styles */
   .focus-ring:focus {
-    outline: 2px solid #4C7FA1;
+    outline: 2px solid #C27A5E;
     outline-offset: 2px;
     border-radius: 0.5rem;
+  }
+
+  /* Animation delay for WhatsApp pulse */
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  /* Mobile-first responsive utilities */
+  .text-responsive {
+    font-size: 0.875rem;
+  }
+
+  @media (min-width: 640px) {
+    .text-responsive {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .text-responsive {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* Smooth scroll behavior for mobile */
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 4rem;
+    }
+  }
+
+  /* Better touch targets for mobile */
+  @media (max-width: 768px) {
+    button,
+    a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Luxury shimmer effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Elegant fade animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

@@ -426,11 +426,11 @@ export default function Contato() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-8 py-4 bg-ocean-500 hover:bg-ocean-600 disabled:bg-ocean-300 text-white rounded-xl font-medium text-lg transition-all hover:scale-105 disabled:scale-100 flex items-center justify-center gap-3 shadow-lg"
+                    className="w-full px-8 py-4 bg-ocean-500 hover:bg-ocean-600 disabled:bg-ocean-300 !text-black rounded-xl font-medium text-lg transition-all hover:scale-105 disabled:scale-100 flex items-center justify-center gap-3 shadow-lg"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
                         Enviando...
                       </>
                     ) : (

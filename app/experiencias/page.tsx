@@ -186,7 +186,7 @@ export default function ExperienciasPage() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm text-ocean-600 rounded-full text-sm font-medium shadow-lg mb-6">
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 !text-black" />
               Descubra sua próxima aventura
             </span>
 
@@ -219,7 +219,7 @@ export default function ExperienciasPage() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2 ${
                     selectedCategory === category.id
-                      ? "bg-ocean-500 text-white shadow-lg scale-105"
+                      ? "bg-ocean-500 !text-black shadow-lg scale-105"
                       : "bg-sand-50 text-neutral-text hover:bg-sand-100"
                   }`}
                 >
@@ -297,10 +297,11 @@ export default function ExperienciasPage() {
 
                         <button
                           onClick={() => handleWaitlistClick(experience)}
-                          className="px-4 py-3 bg-sand-100 hover:bg-sand-200 text-neutral-text rounded-xl font-medium text-sm transition-all flex items-center justify-center gap-2"
+                          className="px-4 py-3 bg-sand-100 hover:bg-sand-200 text-neutral-text rounded-xl font-medium text-sm transition-all flex items-center justify-center gap-2 whitespace-nowrap"
                           title="Lista de espera"
                         >
                           <Calendar className="w-4 h-4" />
+                          Lista
                         </button>
                       </div>
                     </div>
@@ -495,7 +496,7 @@ function ContactForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-6 py-4 bg-ocean-500 hover:bg-ocean-600 disabled:bg-ocean-300 text-white rounded-xl font-medium text-lg transition-all hover:scale-105 disabled:scale-100"
+          className="w-full px-6 py-4 bg-ocean-500 hover:bg-ocean-600 disabled:bg-ocean-300 !text-black rounded-xl font-medium text-lg transition-all hover:scale-105 disabled:scale-100"
         >
           {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
         </button>
@@ -604,7 +605,7 @@ function WaitlistForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-6 py-4 bg-ocean-500 hover:bg-ocean-600 disabled:bg-ocean-300 text-white rounded-xl font-medium transition-all hover:scale-105 disabled:scale-100"
+          className="w-full px-6 py-4 bg-ocean-500 hover:bg-ocean-600 disabled:bg-ocean-300 !text-black rounded-xl font-medium transition-all hover:scale-105 disabled:scale-100"
         >
           {isSubmitting ? "Cadastrando..." : "Entrar na Lista"}
         </button>

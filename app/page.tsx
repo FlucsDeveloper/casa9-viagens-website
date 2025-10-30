@@ -8,6 +8,8 @@ import Card from "@/components/ui/Card";
 import CredentialsStrip from "@/components/ui/CredentialsStrip";
 import ExperienceCard from "@/components/ui/ExperienceCard";
 import FounderCard from "@/components/ui/FounderCard";
+import NewsletterSignup from "@/components/ui/NewsletterSignup";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import {
   ArrowRight,
   Sparkles,
@@ -80,7 +82,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
             src={heroImages.home.url}
             alt={heroImages.home.alt}
@@ -89,11 +91,11 @@ export default function Home() {
             priority
             quality={90}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-white" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-white pointer-events-none" />
         </div>
 
         {/* Content */}
-        <div className="container-max relative z-10 pt-32 pb-20">
+        <div className="container-max relative z-20 pt-32 pb-20">
           <motion.div
             className="max-w-4xl mx-auto text-center"
             initial="hidden"
@@ -101,15 +103,15 @@ export default function Home() {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants} className="mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm text-ocean-600 rounded-full text-sm font-medium shadow-sm">
-                <Sparkles className="w-4 h-4" />
+              <span className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 bg-white/90 backdrop-blur-sm text-terracotta-500 rounded-full text-xs sm:text-sm font-medium shadow-sm">
+                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 !text-black" />
                 Bem-vindo à Casa 9 Viagens
               </span>
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 sm:mb-8 leading-[1.1]"
               style={{
                 textShadow:
                   "0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3)",
@@ -120,7 +122,7 @@ export default function Home() {
 
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-10 leading-relaxed"
+              className="text-lg sm:text-xl md:text-2xl text-white max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4 sm:px-0"
               style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.6)" }}
             >
               {home.hero.subtitle}
@@ -128,37 +130,41 @@ export default function Home() {
 
             <motion.div
               variants={itemVariants}
-              className="flex gap-4 justify-center flex-wrap"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0 relative z-30"
             >
-              <Link href="/experiencias">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="shadow-2xl hover:shadow-ocean-500/50"
-                >
-                  Explorar Experiências <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/sobre">
-                <Button
-                  variant="ghost"
-                  size="lg"
-                  className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20"
-                >
-                  Nossa História
-                </Button>
-              </Link>
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-1 shadow-xl pointer-events-auto relative z-30">
+                <Link href="/experiencias" className="pointer-events-auto">
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="shadow-2xl hover:shadow-terracotta-500/50 w-full sm:w-auto !text-black pointer-events-auto"
+                  >
+                    Explorar Experiências <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-1 shadow-xl pointer-events-auto relative z-30">
+                <Link href="/sobre" className="pointer-events-auto">
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    className="bg-transparent !text-black hover:bg-sand-100 w-full sm:w-auto pointer-events-auto"
+                  >
+                    Nossa História
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
           </motion.div>
         </div>
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 pointer-events-none"
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="flex flex-col items-center gap-2 text-white/70">
+          <div className="flex flex-col items-center gap-2 text-white/70 pointer-events-none">
             <span className="text-xs uppercase tracking-widest">Role</span>
             <svg
               className="w-6 h-6"
@@ -229,7 +235,7 @@ export default function Home() {
                     className="h-full p-8 group hover:shadow-2xl transition-all duration-500 text-center bg-white/80 backdrop-blur-sm border-sand-200/50"
                   >
                     <div className="w-16 h-16 bg-gradient-to-br from-ocean-100 to-ocean-50 rounded-2xl flex items-center justify-center mb-6 group-hover:from-ocean-500 group-hover:to-ocean-400 group-hover:scale-110 transition-all duration-300 mx-auto shadow-sm">
-                      <Icon className="w-8 h-8 text-ocean-600 group-hover:text-white transition-colors duration-300" />
+                      <Icon className="w-8 h-8 !text-black group-hover:!text-white transition-colors duration-300" />
                     </div>
                     <h3 className="text-xl font-serif font-bold text-neutral-text mb-3 group-hover:text-ocean-600 transition-colors">
                       {pilar.title}
@@ -272,11 +278,11 @@ export default function Home() {
           >
             {home.why.map((reason, index) => (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full p-8 bg-sand-50/50 border-sand-200">
-                  <div className="w-12 h-12 bg-ocean-500 rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl">
+                <Card className="h-full p-8 bg-sand-50/50 border-sand-200 text-center">
+                  <div className="w-12 h-12 bg-ocean-500 rounded-full flex items-center justify-center mb-6 !text-black font-bold text-xl mx-auto">
                     {index + 1}
                   </div>
-                  <p className="text-lg text-neutral-text leading-relaxed">
+                  <p className="text-lg text-neutral-text leading-relaxed text-center">
                     {reason}
                   </p>
                 </Card>
@@ -296,6 +302,12 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Newsletter Section */}
+      <NewsletterSignup />
 
       {/* Featured Experiences Section */}
       <section className="relative section-padding overflow-hidden">
@@ -347,7 +359,7 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <Link href="/experiencias">
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" className="!text-black">
                 Ver Todas as Experiências{" "}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -376,24 +388,30 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-              Pronta para criar
-              <br />
-              memórias inesquecíveis?
-            </h2>
-            <p className="text-xl md:text-2xl text-ocean-50 mb-10 leading-relaxed">
-              Toda grande história começa com um simples{" "}
-              <span className="font-serif italic">"olá"</span>.
-            </p>
-            <Link href="/contato">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="bg-white text-ocean-600 hover:bg-sand-50 shadow-2xl"
-              >
-                Vamos Conversar <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
+            <div className="inline-block bg-white backdrop-blur-sm rounded-3xl px-10 py-8 shadow-2xl mb-6 border-2 border-black">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold !text-black leading-tight">
+                Pronta para criar
+                <br />
+                memórias inesquecíveis?
+              </h2>
+            </div>
+            <div className="inline-block bg-white backdrop-blur-sm rounded-3xl px-10 py-6 shadow-2xl mb-10 max-w-2xl border-2 border-black">
+              <p className="text-xl md:text-2xl !text-black leading-relaxed font-light">
+                Toda grande história começa com um simples{" "}
+                <span className="font-serif italic font-normal">"olá"</span>.
+              </p>
+            </div>
+            <div>
+              <Link href="/contato">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="bg-white !text-black hover:bg-sand-50 shadow-2xl"
+                >
+                  Vamos Conversar <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

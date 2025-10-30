@@ -13,8 +13,8 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className={`bg-neutral-lighter rounded-lg border border-sand-200 overflow-hidden ${
-        hover ? "hover:shadow-lg transition-shadow duration-300" : "shadow-md"
+      className={`bg-neutral-lighter rounded-2xl border border-sand-200/50 overflow-hidden ${
+        hover ? "hover:shadow-xl hover:-translate-y-1 transition-all duration-300" : "shadow-md"
       } ${className}`}
     >
       {children}

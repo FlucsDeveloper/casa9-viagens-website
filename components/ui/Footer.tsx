@@ -355,9 +355,15 @@ export default function Footer() {
               "Aqui, viajar é colecionar boas memórias."
             </p>
             <div className="flex items-center justify-center gap-2 text-ocean-500 mt-4">
-              <Heart className="w-5 h-5 fill-current" />
+              <Image
+                src="/logo-casa9.png"
+                alt="Casa 9"
+                width={20}
+                height={20}
+                className="object-contain"
+              />
               <span className="text-sm text-neutral-text-light">
-                Feito com amor
+                Feito com dedicação
               </span>
             </div>
           </div>

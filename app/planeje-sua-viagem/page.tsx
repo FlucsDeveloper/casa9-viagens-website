@@ -193,7 +193,7 @@ export default function PlanejeSuaViagemPage() {
                 >
                   <Card className="p-8 text-center h-full bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:scale-105">
                     <div className="w-16 h-16 bg-gradient-to-br from-ocean-100 to-ocean-50 rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-sm group-hover:shadow-md transition-shadow">
-                      <Icon className="w-8 h-8 text-ocean-600" />
+                      <Icon className="w-8 h-8 !text-black" />
                     </div>
                     <h3 className="text-xl font-serif font-bold text-neutral-text mb-3">
                       {benefit.title}
@@ -493,11 +493,11 @@ export default function PlanejeSuaViagemPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-4 bg-ocean-500 hover:bg-ocean-600 disabled:bg-ocean-300 text-white rounded-xl font-medium text-lg transition-all hover:scale-105 disabled:scale-100 flex items-center justify-center gap-2 shadow-lg"
+                    className="w-full px-6 py-4 bg-ocean-500 hover:bg-ocean-600 disabled:bg-ocean-300 !text-black rounded-xl font-medium text-lg transition-all hover:scale-105 disabled:scale-100 flex items-center justify-center gap-2 shadow-lg"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
                         Agendando...
                       </>
                     ) : (

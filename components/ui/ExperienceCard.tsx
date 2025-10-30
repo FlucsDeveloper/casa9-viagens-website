@@ -167,7 +167,7 @@ export default function ExperienceCard({
               title="Entrar na lista de espera"
             >
               <Users className="w-4 h-4" />
-              <span className="hidden sm:inline">Lista de espera</span>
+              Lista de espera
             </button>
           )}
         </div>

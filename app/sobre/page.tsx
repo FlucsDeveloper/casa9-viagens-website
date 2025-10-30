@@ -61,7 +61,7 @@ export default function SobrePage() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm text-ocean-600 rounded-full text-sm font-medium shadow-lg mb-6">
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 !text-black" />
               Conheça nossa história
             </span>
 
@@ -129,7 +129,7 @@ export default function SobrePage() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/contato">
-                  <Button variant="primary" size="lg">
+                  <Button variant="primary" size="lg" className="!text-black">
                     Agendar conversa <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
@@ -222,7 +222,7 @@ export default function SobrePage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {[
               { title: "Corpo", desc: "Vitalidade e rejuvenescimento" },
               {
@@ -246,11 +246,11 @@ export default function SobrePage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full p-6 text-center bg-sand-50 hover:bg-ocean-50 hover:shadow-lg transition-all duration-300">
+                <Card className="h-full px-6 py-6 text-center bg-sand-50 hover:bg-ocean-50 hover:shadow-lg transition-all duration-300">
                   <div className="w-10 h-10 bg-ocean-500 rounded-full flex items-center justify-center mb-4 text-white font-bold text-sm mx-auto">
                     {index + 1}
                   </div>
-                  <h3 className="text-lg font-serif font-bold text-neutral-text mb-2">
+                  <h3 className="text-base md:text-lg font-serif font-bold text-neutral-text mb-2 text-center">
                     {pilar.title}
                   </h3>
                   <p className="text-sm text-neutral-text-light">{pilar.desc}</p>
@@ -262,43 +262,42 @@ export default function SobrePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-ocean-600">
-        <div className="container-sm text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-              Vamos criar sua próxima jornada?
-            </h2>
-            <p className="text-xl text-ocean-50 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Cada detalhe será cuidadosamente pensado para que você retorne com
-              a alma nutrida e memórias transformadoras.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/contato">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="bg-white text-ocean-600 hover:bg-sand-50"
-                >
-                  Agendar conversa <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/experiencias">
-                <Button
-                  variant="ghost"
-                  size="lg"
-                  className="bg-white/10 text-white hover:bg-white/20"
-                >
-                  Ver experiências
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
+      <section className="relative min-h-screen flex flex-col items-center justify-center bg-ocean-600 px-8 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="w-full max-w-4xl mx-auto text-center"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 !text-black leading-tight px-4">
+            Vamos criar sua próxima jornada?
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-ocean-50 mb-10 leading-relaxed max-w-2xl mx-auto px-4">
+            Cada detalhe será cuidadosamente pensado para que você retorne com
+            a alma nutrida e memórias transformadoras.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
+            <Link href="/contato">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="bg-white !text-black hover:bg-sand-50 w-full sm:w-auto"
+              >
+                Agendar conversa <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+            <Link href="/experiencias">
+              <Button
+                variant="ghost"
+                size="lg"
+                className="bg-white/10 text-white hover:bg-white/20 w-full sm:w-auto"
+              >
+                Ver experiências
+              </Button>
+            </Link>
+          </div>
+        </motion.div>
       </section>
     </>
   );

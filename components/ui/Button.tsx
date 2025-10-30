@@ -16,24 +16,24 @@ export default function Button({
   children,
   ...props
 }: ButtonProps) {
-  // Base styles applied to all buttons
-  const baseStyles = "inline-flex items-center justify-center font-semibold rounded-lg transition-colors duration-200 focus-ring";
+  // Base styles with luxury refinements
+  const baseStyles = "inline-flex items-center justify-center font-medium rounded-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
   const variantStyles = {
     primary:
-      "bg-ocean-500 text-white hover:bg-ocean-600 hover:scale-105 shadow-md hover:shadow-lg",
+      "bg-gradient-to-r from-terracotta-400 to-terracotta-500 text-neutral-text hover:from-terracotta-500 hover:to-terracotta-600 hover:scale-[1.02] shadow-lg hover:shadow-xl focus:ring-terracotta-400",
     secondary:
-      "bg-white text-black hover:bg-sand-50 hover:scale-105 shadow-sm hover:shadow-md border border-ocean-100",
+      "bg-champagne-200 text-neutral-text hover:bg-champagne-300 hover:scale-[1.02] shadow-sm hover:shadow-md border border-champagne-300/50 focus:ring-champagne-400",
     outline:
-      "bg-transparent border-2 border-ocean-500 text-ocean-600 hover:bg-ocean-50 hover:scale-105",
+      "bg-transparent border-2 border-terracotta-400 text-terracotta-500 hover:bg-terracotta-50 hover:scale-[1.02] focus:ring-terracotta-400",
     ghost:
-      "bg-transparent text-neutral-text hover:bg-neutral-lighter hover:scale-105",
+      "bg-transparent text-neutral-text hover:bg-sand-100 hover:scale-[1.02] focus:ring-sand-300",
   };
 
   const sizeStyles = {
-    sm: "px-4 py-2 text-sm gap-1.5",
-    md: "px-6 py-3 text-base gap-2",
-    lg: "px-8 py-4 text-lg gap-3",
+    sm: "px-5 py-2.5 text-sm gap-2",
+    md: "px-7 py-3.5 text-base gap-2.5",
+    lg: "px-9 py-4 text-lg gap-3",
   };
 
   return (

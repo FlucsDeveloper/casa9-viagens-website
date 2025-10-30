@@ -63,10 +63,10 @@ export default function Header() {
               />
             </motion.div>
             <div className="flex flex-col">
-              <span className="font-serif text-base md:text-lg font-bold text-neutral-text group-hover:text-[#B8956A] transition-colors">
+              <span className="font-serif text-base md:text-lg font-bold text-neutral-text group-hover:text-accent-gold transition-colors duration-300">
                 Casa 9 Viagens
               </span>
-              <span className="text-[10px] md:text-xs text-neutral-text-light tracking-wider uppercase">
+              <span className="text-[10px] md:text-xs text-neutral-text-light tracking-wider uppercase group-hover:text-accent-gold/80 transition-colors duration-300">
                 Viagens de Reconexão
               </span>
             </div>
@@ -78,24 +78,24 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative px-4 py-2 text-sm text-neutral-text hover:text-ocean-500 transition-colors font-medium group"
+                className="relative px-4 py-2 text-sm text-neutral-text hover:text-accent-gold transition-colors duration-300 font-medium group"
               >
                 {link.label}
-                <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-ocean-500 group-hover:w-1/2 group-hover:left-1/4 transition-all duration-300" />
+                <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-accent-gold group-hover:w-1/2 group-hover:left-1/4 transition-all duration-300" />
               </Link>
             ))}
             <Link
               href="/contato"
-              className="ml-4 px-6 py-2.5 bg-white text-black rounded-full text-sm font-semibold hover:bg-sand-50 hover:shadow-lg transition-colors duration-200 hover:scale-105 focus-ring border border-ocean-100"
+              className="ml-4 px-6 py-2.5 bg-gradient-to-r from-terracotta-400 to-terracotta-500 hover:from-terracotta-500 hover:to-terracotta-600 text-neutral-text rounded-full text-sm font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 shadow-md"
             >
-              Vamos Conversar
+              <span className="font-serif">Vamos Conversar</span>
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 hover:bg-sand-50 rounded-lg transition-colors"
+            className="md:hidden p-2 hover:bg-champagne-100 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             <AnimatePresence mode="wait">
@@ -107,7 +107,7 @@ export default function Header() {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <X className="w-6 h-6 text-ocean-500" />
+                  <X className="w-6 h-6 text-terracotta-400" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -117,7 +117,7 @@ export default function Header() {
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Menu className="w-6 h-6 text-ocean-500" />
+                  <Menu className="w-6 h-6 text-terracotta-400" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -133,7 +133,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white/95 backdrop-blur-lg border-t border-sand-100"
+            className="md:hidden bg-white/95 backdrop-blur-lg border-t border-champagne-200"
           >
             <nav className="container-max flex flex-col py-6 space-y-1">
               {navLinks.map((link, index) => (
@@ -145,7 +145,7 @@ export default function Header() {
                 >
                   <Link
                     href={link.href}
-                    className="block px-4 py-3 text-neutral-text hover:text-ocean-500 hover:bg-sand-50 rounded-lg transition-all font-medium"
+                    className="block px-4 py-3 text-neutral-text hover:text-accent-gold hover:bg-champagne-100 rounded-lg transition-all duration-300 font-medium"
                     onClick={closeMenu}
                   >
                     {link.label}
@@ -159,10 +159,10 @@ export default function Header() {
               >
                 <Link
                   href="/contato"
-                  className="block mt-4 px-6 py-3 bg-white text-black text-center rounded-full font-semibold hover:bg-sand-50 transition-colors duration-200 shadow-md hover:shadow-lg focus-ring border border-ocean-100"
+                  className="block mt-4 px-6 py-3 bg-gradient-to-r from-terracotta-400 to-terracotta-500 hover:from-terracotta-500 hover:to-terracotta-600 text-neutral-text text-center rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
                   onClick={closeMenu}
                 >
-                  Vamos Conversar
+                  <span className="font-serif">Vamos Conversar</span>
                 </Link>
               </motion.div>
             </nav>

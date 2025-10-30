@@ -8,16 +8,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Primary luxury palette
+        champagne: {
+          50: '#FDFCFB',
+          100: '#F7F4F0',
+          200: '#EFE8DA', // Primary champagne
+          300: '#E5DAC8',
+          400: '#D9CBB5',
+          500: '#CCBCA2',
+        },
+        terracotta: {
+          100: '#E5C4B5',
+          200: '#D9A895',
+          300: '#CF8E75',
+          400: '#C27A5E', // Primary terracotta
+          500: '#B56B4F',
+          600: '#A25C40',
+        },
         sand: {
-          50: '#FAFAF7',
-          100: '#F5F1E8',
-          200: '#E8E2D5',
+          50: '#FDFDFB',
+          100: '#F9F8F5',
+          200: '#F5F3ED', // Primary sand
+          300: '#EDE9E0',
+          400: '#E5DFD3',
+          500: '#DDD5C6',
         },
-        earth: {
-          100: '#D4C4B5',
-          200: '#C4B5A0',
-          300: '#A69482',
-        },
+        // Supporting colors
         ocean: {
           50: '#F0F5F8',
           100: '#D9E8F1',
@@ -26,17 +42,25 @@ const config: Config = {
           500: '#4C7FA1',
           600: '#3A5F7F',
         },
-        accent: {
-          green: '#9DB4A3',
-          terracotta: '#C9B8A3',
-          warm: '#D4A59A',
+        earth: {
+          100: '#D4C4B5',
+          200: '#C4B5A0',
+          300: '#A69482',
         },
+        // Text colors
         neutral: {
-          text: '#3E3E3E',
-          'text-light': '#6B6B6B',
-          'text-lighter': '#8B8B8B',
+          text: '#1E1E1E', // Soft black as primary text
+          'text-light': '#4A4A4A',
+          'text-lighter': '#6B6B6B',
           light: '#FAF9F6',
           lighter: '#FEFEFE',
+        },
+        // Accent colors
+        accent: {
+          gold: '#D4B894', // Champagne gold accent
+          sage: '#9DB4A3',
+          terracotta: '#C27A5E',
+          warm: '#D4A59A',
         },
       },
       fontFamily: {

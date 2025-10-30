@@ -195,8 +195,8 @@ export const experienciaImages = {
 // Imagens de background para seções - refletindo os valores do Casa 9
 export const backgroundImages = {
   ctaHome: {
-    url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=90&fit=crop", // Pessoa meditando na natureza - Espiritualidade + Autoconhecimento
-    alt: "Meditação em meio à natureza – encontre sua paz interior",
+    url: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=90&fit=crop", // Casal planejando viagem com mapa - Planejamento + Conexão
+    alt: "Casal planejando jornada juntos – transforme sonhos em memórias",
   },
   testimonials: {
     url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=90&fit=crop", // Ingredientes frescos naturais - pilar Alimentação

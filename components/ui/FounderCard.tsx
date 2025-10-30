@@ -79,7 +79,7 @@ export default function FounderCard({ variant = "compact" }: FounderCardProps) {
         </p>
         <div className="flex flex-wrap gap-4">
           <Link href="/contato">
-            <Button variant="primary" size="lg">
+            <Button variant="primary" size="lg" className="!text-black">
               Agendar conversa <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>

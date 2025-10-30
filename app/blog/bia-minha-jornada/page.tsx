@@ -121,7 +121,7 @@ export default function BiaMinhаJornadaPage() {
                     {about.founder.bio}
                   </p>
                   <Link href="/contato">
-                    <Button variant="primary" size="sm">
+                    <Button variant="primary" size="sm" className="!text-black">
                       Agendar uma conversa
                     </Button>
                   </Link>
@@ -146,7 +146,7 @@ export default function BiaMinhаJornadaPage() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/experiencias">
-                  <Button variant="primary" size="lg">
+                  <Button variant="primary" size="lg" className="!text-black">
                     Ver experiências
                   </Button>
                 </Link>

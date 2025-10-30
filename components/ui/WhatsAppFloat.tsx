@@ -9,14 +9,14 @@ export default function WhatsAppFloat() {
   const [isHovered, setIsHovered] = useState(false);
 
   const whatsappNumber = "5511999999999";
-  const message = "Olá! Gostaria de conhecer mais sobre a Casa 9 Viagens.";
+  const message = "Olá! Gostaria de conhecer mais sobre a Casa 9 Viagens e criar memórias inesquecíveis.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     message
   )}`;
 
   return (
     <>
-      {/* Tooltip */}
+      {/* Elegant Tooltip */}
       <AnimatePresence>
         {isHovered && !isOpen && (
           <motion.div
@@ -26,64 +26,59 @@ export default function WhatsAppFloat() {
             transition={{ duration: 0.2 }}
             className="fixed bottom-24 right-8 z-[60] pointer-events-none"
           >
-            <div className="bg-neutral-text text-white px-4 py-2 rounded-xl text-sm font-medium shadow-lg whitespace-nowrap">
-              Vamos conversar?
-              <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-neutral-text" />
+            <div className="bg-white/95 backdrop-blur-md text-neutral-text px-5 py-3 rounded-2xl text-sm font-medium shadow-2xl whitespace-nowrap border border-champagne-200">
+              <span className="font-serif italic">Vamos conversar?</span>
+              <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-white/95 border-r border-b border-champagne-200" />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Message Card */}
+      {/* Luxury Message Card */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-24 right-6 z-[60] w-80 max-w-[calc(100vw-3rem)]"
+            className="fixed bottom-24 right-6 z-[60] w-[380px] max-w-[calc(100vw-3rem)]"
           >
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-sand-200">
-              {/* Header */}
-              <div className="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                  <svg
-                    className="w-7 h-7 text-green-500"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline
-                      points="9 22 9 12 15 12 15 22"
-                      fill="currentColor"
-                    />
-                  </svg>
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-champagne-300/30">
+              {/* Elegant Header */}
+              <div className="bg-gradient-to-br from-[#25D366] to-[#1ebe5d] px-6 py-5 flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                  <span className="text-2xl">✨</span>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-white font-bold text-sm">
+                  <h4 className="!text-black font-serif text-lg font-medium">
                     Casa 9 Viagens
                   </h4>
-                  <p className="text-green-50 text-xs">Online agora</p>
+                  <p className="!text-black/80 text-xs font-light tracking-wide">
+                    Consultoria de viagens boutique
+                  </p>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:bg-white/20 rounded-full p-1 transition-colors"
+                  className="!text-black/80 hover:!text-black hover:bg-black/10 rounded-full p-2 transition-all"
                   aria-label="Fechar"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Message */}
-              <div className="p-6 bg-gradient-to-b from-sand-50 to-white">
-                <div className="bg-white rounded-2xl rounded-tl-sm p-4 shadow-sm border border-sand-100 mb-4">
-                  <p className="text-neutral-text text-sm leading-relaxed">
-                    Olá! 👋
+              {/* Message Body */}
+              <div className="p-6 bg-gradient-to-b from-champagne-50 via-white to-sand-50">
+                <div className="bg-white rounded-2xl rounded-tl-sm p-5 shadow-sm border border-champagne-200/50 mb-5">
+                  <p className="text-neutral-text text-sm leading-relaxed font-light">
+                    <span className="font-serif italic text-base">Olá!</span>
                     <br />
                     <br />
-                    Como podemos transformar sua próxima viagem em uma memória
-                    inesquecível?
+                    Que tal transformar sua próxima viagem em uma
+                    <span className="font-serif italic"> experiência inesquecível</span>?
+                    <br />
+                    <br />
+                    Estou aqui para criar algo único para você.
                   </p>
                 </div>
 
@@ -91,24 +86,28 @@ export default function WhatsAppFloat() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-xl transition-all hover:scale-105"
+                  className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-[#25D366] to-[#1ebe5d] hover:from-[#1ebe5d] hover:to-[#128c40] !text-black font-medium py-3.5 px-6 rounded-2xl transition-all hover:scale-[1.02] shadow-lg hover:shadow-xl"
                   onClick={() => setIsOpen(false)}
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Iniciar Conversa
+                  <span className="font-serif">Iniciar Conversa</span>
                 </a>
+
+                <p className="text-xs text-neutral-text-lighter text-center mt-3 italic">
+                  Resposta em minutos durante horário comercial
+                </p>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Float Button */}
+      {/* Luxury Float Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="fixed bottom-6 right-6 z-[60] w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 focus:outline-none focus:ring-4 focus:ring-green-100"
+        className="fixed bottom-6 right-6 z-[60] w-16 h-16 bg-gradient-to-br from-[#25D366] to-[#1ebe5d] hover:from-[#1ebe5d] hover:to-[#128c40] text-white rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#25D366]/30"
         aria-label="Abrir WhatsApp"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -133,7 +132,7 @@ export default function WhatsAppFloat() {
               transition={{ duration: 0.3 }}
             >
               <svg
-                className="w-7 h-7"
+                className="w-8 h-8"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -143,9 +142,12 @@ export default function WhatsAppFloat() {
           )}
         </AnimatePresence>
 
-        {/* Pulse Animation */}
+        {/* Elegant Pulse Animation */}
         {!isOpen && (
-          <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20" />
+          <>
+            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25" />
+            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-15 animation-delay-200" />
+          </>
         )}
       </motion.button>
     </>
